@@ -9,7 +9,9 @@ import { fetchCategoriesStart } from '../../store/categories/categories.action'
 
 const Shop = () => {
   const dispatch = useDispatch()
-  useEffect(() => dispatch(fetchCategoriesStart()), [])
+  useEffect(() => {
+    dispatch(fetchCategoriesStart())
+  }, [])
   return (
     <Routes>
       <Route index element={<CategoriesPreview />} />
