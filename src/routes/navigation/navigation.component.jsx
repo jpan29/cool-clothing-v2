@@ -8,7 +8,7 @@ import {
   LogoContainer,
 } from './navigation.style.jsx'
 import { ReactComponent as Logo } from '../../../src/assets/logo.svg'
-import { signOutUser } from '../../utils/firebase/firebase.utils'
+
 import CartIcon from '../../components/cart-icon/cart-icon.component'
 import CartDropdown from '../../components/cart-dropdown/cart-dropdown.component'
 
