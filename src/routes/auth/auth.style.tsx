@@ -4,4 +4,8 @@ export const AuthContainer = styled.div`
   justify-content: space-between;
   width: 900px;
   margin: 30px auto;
+  @media screen and (max-width: 800px) {
+    width: 500px;
+    flex-direction: column;
+  }
 `

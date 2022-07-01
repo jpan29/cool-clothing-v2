@@ -11,13 +11,15 @@ import {
   selectCartCount,
   selectCartItems,
 } from '../../store/cart/cart.selector'
+import { useCallback } from 'react'
 const CartDropdown = () => {
   const cartItems = useSelector(selectCartItems)
   const cartCount = useSelector(selectCartCount)
   const navigate = useNavigate()
-  const goToCheckout = () => {
+  const goToCheckout = useCallback(() => {
     navigate('/checkout')
-  }
+  }, [])
+
   return (
     <CartDropdownContainer>
       <CartItems>

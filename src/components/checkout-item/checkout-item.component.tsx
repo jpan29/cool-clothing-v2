@@ -9,10 +9,11 @@ import {
 import { selectCartItems } from '../../store/cart/cart.selector'
 
 import { CartItem } from '../../store/cart/cart.type'
+import { memo } from 'react'
 type CheckoutItemProps = {
   cartItem: CartItem
 }
-const CheckoutItem = ({ cartItem }: CheckoutItemProps) => {
+const CheckoutItem = memo(({ cartItem }: CheckoutItemProps) => {
   const dispatch = useDispatch()
   const cartItems = useSelector(selectCartItems)
   const { name, imageUrl, price, quantity } = cartItem
@@ -42,5 +43,5 @@ const CheckoutItem = ({ cartItem }: CheckoutItemProps) => {
       </span>
     </CheckoutItemContainer>
   )
-}
+})
 export default CheckoutItem

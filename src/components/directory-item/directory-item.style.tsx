@@ -10,7 +10,7 @@ export const BackgroundImage = styled.div<BackgroundImageProps>`
   background-image: ${({ imageUrl }) => `url(${imageUrl})`};
 `
 export const Body = styled.div`
-  height: 90px;
+  height: 100px;
   padding: 0 25px;
   display: flex;
   flex-direction: column;
@@ -20,7 +20,9 @@ export const Body = styled.div`
   background-color: white;
   opacity: 0.7;
   position: absolute;
-
+  @media screen and (max-width: 600px) {
+    padding: 0 10px;
+  }
   h2 {
     font-weight: bold;
     margin: 0 6px 0;
@@ -36,7 +38,7 @@ export const Body = styled.div`
 `
 export const DirectoryItemContainer = styled.div`
   min-width: 30%;
-  height: 240px;
+  height: 320px;
   flex: 1 1 auto;
   display: flex;
   align-items: center;

@@ -12,6 +12,10 @@ export const ProductCardContainer = styled.div`
     height: 95%;
     object-fit: cover;
     margin-bottom: 5px;
+    @media screen and (max-width: 800px) {
+      width: 92%;
+      height: 90%;
+    }
   }
 
   button {
