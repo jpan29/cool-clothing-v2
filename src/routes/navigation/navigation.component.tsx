@@ -14,14 +14,13 @@ import CartDropdown from '../../components/cart-dropdown/cart-dropdown.component
 
 import { selectCurrentUser } from '../../store/user/user.selector'
 import { selectIsCartOpen } from '../../store/cart/cart.selector'
-import { setIsCartOpen } from '../../store/cart/cart.action'
+
 import { signOutStart } from '../../store/user/user.action'
 const Navigation = () => {
   const dispatch = useDispatch()
   const currentUser = useSelector(selectCurrentUser)
   const isCartOpen = useSelector(selectIsCartOpen)
 
-  const handleIsCartOpen = () => dispatch(setIsCartOpen(!isCartOpen))
   const handleSignOut = () => dispatch(signOutStart())
 
   return (
@@ -40,7 +39,7 @@ const Navigation = () => {
           ) : (
             <NavLink to="/auth">SIGN IN</NavLink>
           )}
-          <CartIcon onClick={handleIsCartOpen} />
+          <CartIcon />
         </NavLinks>
       </NavigationContainer>
       {isCartOpen && <CartDropdown />}

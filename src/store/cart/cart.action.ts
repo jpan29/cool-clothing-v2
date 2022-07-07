@@ -81,3 +81,4 @@ export const cleanItemFromCart = (
   const newCartItems = cleanCartItem(cartItems, itemToClean)
   return setCartItems(newCartItems)
 }
+export const cleanAllItemFromCart = () => setCartItems([])

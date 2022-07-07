@@ -25,7 +25,7 @@ const Signin = () => {
     setFormFields(defaultFormFields)
   }
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setFormFields({ ...formFields, [name]: value })
   }

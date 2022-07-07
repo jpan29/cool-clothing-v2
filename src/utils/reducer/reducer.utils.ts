@@ -1,17 +1,17 @@
 import { AnyAction } from 'redux'
 // AC generic stands for action creator
-type Matchable<AC extends () => AnyAction> = AC & {
+type Matchable<AC extends () => AnyAction & { type: string }> = AC & {
   type: ReturnType<AC>['type']
   match(action: AnyAction): action is ReturnType<AC>
 }
 // overloading function
-export function withMatcher<AC extends () => AnyAction & { type: string }>(
+export function withMatcher<AC extends () => AnyAction>(
   actionCreator: AC
 ): Matchable<AC>
 
-export function withMatcher<
-  AC extends (...args: any[]) => AnyAction & { type: string }
->(actionCreator: AC): Matchable<AC>
+export function withMatcher<AC extends (...args: any[]) => AnyAction>(
+  actionCreator: AC
+): Matchable<AC>
 
 // implementation function
 export function withMatcher(actionCreator: Function) {
@@ -30,7 +30,7 @@ export type ActionWithPayload<T, P> = {
 export type Action<T> = {
   type: T
 }
-// overloading function
+// overload signature definition
 export function createAction<T extends string, P>(
   type: T,
   payload: P
@@ -39,7 +39,7 @@ export function createAction<T extends string>(
   type: T,
   payload: void
 ): Action<T>
-// implementation function
+// implementation signature
 export function createAction<T extends string, P>(type: T, payload: P) {
   return { type, payload }
 }

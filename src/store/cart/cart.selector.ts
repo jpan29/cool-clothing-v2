@@ -13,6 +13,7 @@ export const selectIsCartOpen = createSelector(
   [selectCartReducer],
   (cart) => cart.isCartOpen
 )
+
 export const selectCartCount = createSelector([selectCartItems], (cartItems) =>
   cartItems.reduce((acc, item) => acc + item.quantity, 0)
 )

@@ -43,6 +43,7 @@ export const auth = getAuth()
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider)
 export const signInWithGoogleRedirect = () => signInWithRedirect(auth, provider)
 export const db = getFirestore()
+
 export type objectToAdd = {
   title: string
 }
@@ -64,14 +65,8 @@ export const getCategoriesAndDocuments = async (): Promise<Category[]> => {
   const collectionRef = collection(db, 'categories')
   const q = query(collectionRef)
   const querySnapshot = await getDocs(q)
-  return querySnapshot.docs.map((docSnapshot) => docSnapshot.data() as Category)
-  // const categoryMap = querySnapshot.docs.reduce((acc, doc) => {
-  //   const { title, items } = doc.data()
-  //   acc[title.toLowerCase()] = items
-  //   return acc
 
-  // }, {})
-  // return categoryMap
+  return querySnapshot.docs.map((docSnapshot) => docSnapshot.data() as Category)
 }
 
 export type options = {

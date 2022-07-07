@@ -25,6 +25,7 @@ export function* getSnapshotFromUserAuth(userAuth: User, options?: options) {
   try {
     const userSnapshot = yield* call(createUserDocFromAuth, userAuth, options)
     if (userSnapshot)
+      // id is not in the userSnapshot.data() ,have to manually add it
       yield* put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }))
   } catch (err) {
     yield* put(signInFailed(err as Error))

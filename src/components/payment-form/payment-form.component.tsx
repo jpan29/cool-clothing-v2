@@ -1,7 +1,8 @@
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { PaymentIntent, StripeCardElement } from '@stripe/stripe-js'
 import { useState, FormEvent } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { cleanAllItemFromCart } from '../../store/cart/cart.action'
 import { selectCartTotal } from '../../store/cart/cart.selector'
 import { selectCurrentUser } from '../../store/user/user.selector'
 import { BUTTON_TYPE_CLASSES } from '../button/button.component'
@@ -11,6 +12,7 @@ const isValidCardElement = (
   card: StripeCardElement | null
 ): card is StripeCardElement => card !== null
 const PaymentForm = () => {
+  const dispatch = useDispatch()
   const [isProcessing, setIsProcessing] = useState(false)
   const total = useSelector(selectCartTotal)
   const currentUser = useSelector(selectCurrentUser)
@@ -40,9 +42,14 @@ const PaymentForm = () => {
       },
     })
 
-    if (paymentResult.error) alert(paymentResult.error)
-    if ((paymentResult.paymentIntent as PaymentIntent).status === 'succeeded')
-      alert('payment successful')
+    if (paymentResult.error) {
+      alert(paymentResult.error.message)
+      setIsProcessing(false)
+    }
+    if ((paymentResult.paymentIntent as PaymentIntent).status === 'succeeded') {
+      alert('Payment successful')
+      dispatch(cleanAllItemFromCart())
+    }
     setIsProcessing(false)
   }
   return (

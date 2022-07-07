@@ -15,7 +15,6 @@ export const cartReducer = (
   action: AnyAction
 ): CartState => {
   if (setCartItems.match(action)) {
-    console.log(setCartItems)
     return {
       ...state,
       cartItems: action.payload,
