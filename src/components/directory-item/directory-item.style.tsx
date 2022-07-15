@@ -3,15 +3,16 @@ type BackgroundImageProps = {
   imageUrl: string
 }
 export const BackgroundImage = styled.div<BackgroundImageProps>`
-  width: 100%;
-  height: 100%;
+  width: 120%;
+  height: 130%;
   background-size: cover;
   background-position: center;
   background-image: ${({ imageUrl }) => `url(${imageUrl})`};
 `
 export const Body = styled.div`
   height: 100px;
-  padding: 0 25px;
+  width: 150px;
+  padding: 0 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,6 +21,8 @@ export const Body = styled.div`
   background-color: white;
   opacity: 0.7;
   position: absolute;
+  transform: translateY(20px);
+
   @media screen and (max-width: 600px) {
     padding: 0 10px;
   }
@@ -46,6 +49,7 @@ export const DirectoryItemContainer = styled.div`
   border: 1px solid black;
   margin: 0 7.5px 15px;
   overflow: hidden;
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3);
 
   &:hover {
     cursor: pointer;

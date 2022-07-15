@@ -51,7 +51,7 @@ const Signin = () => {
   return (
     <>
       <SignInContainer>
-        <h2>I have an acount</h2>
+        <h2>I have an account</h2>
         <form onSubmit={handleSubmit}>
           <FormInput
             label="Email"
