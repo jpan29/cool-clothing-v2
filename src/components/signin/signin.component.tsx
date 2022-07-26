@@ -2,7 +2,7 @@
 // import { getRedirectResult } from 'firebase/auth'
 import { useState, ChangeEvent, FormEvent } from 'react'
 import { SignInContainer, ButtonsContainer } from './signin.style'
-
+import { useNavigate } from 'react-router-dom'
 import FormInput from '../Form/form.component'
 import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component'
 import { useDispatch } from 'react-redux'
@@ -13,7 +13,7 @@ import {
 
 const Signin = () => {
   const dispatch = useDispatch()
-
+  const navigate = useNavigate()
   const defaultFormFields = {
     email: '',
     password: '',
@@ -32,6 +32,7 @@ const Signin = () => {
   const signInWithGoogle = async () => {
     dispatch(googleSignInStart())
     // await signInWithGooglePopup()
+    navigate('/')
   }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -42,6 +43,7 @@ const Signin = () => {
       // await signInAuthUserWithEmailAndPassword(email, password)
 
       resetFormFields()
+      navigate('/')
     } catch (err) {
       alert('Invalid email or password')
       console.log('user login failed', err)
