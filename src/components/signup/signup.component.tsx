@@ -1,12 +1,13 @@
 import { useState, ChangeEvent, FormEvent } from 'react'
 import './signup.style.tsx'
 import Button from '../button/button.component'
-import { useNavigate } from 'react-router-dom'
+
 import FormInput from '../Form/form.component'
 import { useDispatch } from 'react-redux'
 import { signUpStart } from '../../store/user/user.action'
 import { SignUpContainer } from './signup.style'
 import { AuthError, AuthErrorCodes } from 'firebase/auth'
+import { useNavigate } from 'react-router-dom'
 
 const defaultFormFields = {
   displayName: '',
@@ -16,11 +17,10 @@ const defaultFormFields = {
 }
 
 const Signup = () => {
-  const navigate = useNavigate()
   const dispatch = useDispatch()
   const [formFields, setFormFields] = useState(defaultFormFields)
   const { displayName, email, password, confirmPassword } = formFields
-
+  const navigate = useNavigate()
   const resetFormFields = () => {
     setFormFields(defaultFormFields)
   }
@@ -40,7 +40,9 @@ const Signup = () => {
       dispatch(signUpStart(email, password, displayName))
 
       resetFormFields()
-      navigate('/')
+      setTimeout(() => {
+        navigate('/')
+      }, 2000)
     } catch (err) {
       if ((err as AuthError).code === AuthErrorCodes.EMAIL_EXISTS)
         alert('Email has already been used')

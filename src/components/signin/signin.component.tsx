@@ -32,7 +32,9 @@ const Signin = () => {
   const signInWithGoogle = async () => {
     dispatch(googleSignInStart())
     // await signInWithGooglePopup()
-    navigate('/')
+    setTimeout(() => {
+      navigate('/')
+    }, 3000)
   }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -43,7 +45,9 @@ const Signin = () => {
       // await signInAuthUserWithEmailAndPassword(email, password)
 
       resetFormFields()
-      navigate('/')
+      setTimeout(() => {
+        navigate('/')
+      }, 2000)
     } catch (err) {
       alert('Invalid email or password')
       console.log('user login failed', err)
